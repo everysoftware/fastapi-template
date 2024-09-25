@@ -162,5 +162,5 @@ cython_debug/
 # Environments
 *.env
 .dev.env
-!.example.env
+!.env.example
 certs
