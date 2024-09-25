@@ -1,4 +1,3 @@
-
 from app.schemas import BackendSettings
 
 

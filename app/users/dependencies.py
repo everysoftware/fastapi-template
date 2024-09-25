@@ -31,18 +31,18 @@ cookie_auth = APIKeyCookie(
 
 
 def get_token(
-        token: Annotated[str, Depends(auth)],
-        _header_token: Annotated[str | None, Depends(header_auth)],
-        _cookie_auth: Annotated[str | None, Depends(cookie_auth)],
+    token: Annotated[str, Depends(auth)],
+    _header_token: Annotated[str | None, Depends(header_auth)],
+    _cookie_auth: Annotated[str | None, Depends(cookie_auth)],
 ) -> str:
     return token
 
 
 class GetCurrentUser:
     async def __call__(
-            self,
-            users: UserServiceDep,
-            token: Annotated[str, Depends(get_token)],
+        self,
+        users: UserServiceDep,
+        token: Annotated[str, Depends(get_token)],
     ) -> UserRead:
         return await users.validate_token(token)
 
@@ -53,11 +53,11 @@ UserDep = Annotated[UserRead, Depends(get_user)]
 
 class Requires:
     def __init__(
-            self,
-            is_superuser: bool | None = None,
-            has_password: bool | None = None,
-            is_verified: bool | None = None,
-            is_active: bool | None = None,
+        self,
+        is_superuser: bool | None = None,
+        has_password: bool | None = None,
+        is_verified: bool | None = None,
+        is_active: bool | None = None,
     ):
         self.is_superuser = is_superuser
         self.has_password = has_password
@@ -65,23 +65,23 @@ class Requires:
         self.is_active = is_active
 
     async def __call__(
-            self,
-            users: UserServiceDep,
-            user: UserDep,
+        self,
+        users: UserServiceDep,
+        user: UserDep,
     ) -> UserRead:
         if (
-                self.is_superuser is not None
-                and user.is_superuser != self.is_superuser
+            self.is_superuser is not None
+            and user.is_superuser != self.is_superuser
         ):
             raise NoPermission()
         if (
-                self.has_password is not None
-                and user.has_password != self.has_password
+            self.has_password is not None
+            and user.has_password != self.has_password
         ):
             raise NoPermission()
         if (
-                self.is_verified is not None
-                and user.is_verified != self.is_verified
+            self.is_verified is not None
+            and user.is_verified != self.is_verified
         ):
             raise NoPermission()
         if self.is_active is not None and user.is_active != self.is_active:

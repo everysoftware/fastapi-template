@@ -9,6 +9,9 @@ Production-ready FastAPI template with PostgreSQL, Redis & JWT authorization.
 - Extendable **role-based access control** (supports user & superuser)
 - Powerful **user** management: CRUD, search, etc.
 - **Admin panel** with authorization & CRUD operations
+- **Docker**, **Pre-commit** & **CI** for better development experience
+- Built with **[FastAPI best practices](https://github.com/zhanymkanov/fastapi-best-practices)**
+  and **[Tips](https://github.com/Kludex/fastapi-tips)**
 
 ## Installation
 
@@ -38,4 +41,4 @@ make up
 
 ![img.png](assets/admin_panel.png)
 
-**Made with love by Ivan Stasevich ❤️**
+**Made with love ❤️**

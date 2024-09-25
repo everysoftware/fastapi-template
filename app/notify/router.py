@@ -14,9 +14,7 @@ async def send_code(
     user: UserDep,
     via: NotifyVia = NotifyVia.email,
 ) -> BackendOK:
-    await service.send_code(
-        via=via, email=user.email, telegram_id=user.telegram_id
-    )
+    await service.send_code(via=via, email=user.email)
     return backend_ok
 
 
