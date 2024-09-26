@@ -17,7 +17,7 @@ up-prod:
 
 .PHONY: db
 db:
-	docker-compose exec -it db psql -U postgres -d app
+	docker-compose exec -it db psql -U postgres -p changethis -d app
 
 .PHONY: logs
 logs:
