@@ -1,17 +1,22 @@
 from __future__ import annotations
 
 import datetime
+import uuid
 from typing import Literal, cast
 
-from pydantic import Field, computed_field, UUID4
+from pydantic import Field, computed_field
 
 from app.schemas import BackendBase
 
 type OrderType = Literal["asc", "desc"]
 
 
-class IDModel(BackendBase):
-    id: UUID4
+class IntegerIDModel(BackendBase):
+    id: int
+
+
+class UUIDModel(BackendBase):
+    id: uuid.UUID
 
 
 class TimestampModel(BackendBase):
@@ -45,8 +50,8 @@ class PageParams(BackendBase):
         return [SortParam.from_str(i) for i in sort]
 
 
-class Page[IT: BackendBase](BackendBase):
-    items: list[IT]
+class Page[T: BackendBase](BackendBase):
+    items: list[T]
 
     @computed_field  # type: ignore
     @property

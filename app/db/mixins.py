@@ -1,10 +1,10 @@
 import datetime
 import uuid
 
+from sqlalchemy import Identity
 from sqlalchemy.orm import mapped_column, Mapped
 
 from app.db import utils
-from app.db.types import ID
 
 
 # https://docs.sqlalchemy.org/en/20/core/defaults.html
@@ -16,8 +16,16 @@ class Mixin:
     pass
 
 
-class IDMixin(Mixin):
-    id: Mapped[ID] = mapped_column(
+class IntegerIDMixin(Mixin):
+    id: Mapped[int] = mapped_column(
+        Identity(),
+        primary_key=True,
+        sort_order=-100,
+    )
+
+
+class UUID4Mixin(Mixin):
+    id: Mapped[uuid.UUID] = mapped_column(
         primary_key=True,
         default=uuid.uuid4,
         sort_order=-100,

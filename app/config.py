@@ -16,10 +16,13 @@ class CORSSettings(BackendSettings):
 
 class AppSettings(BackendSettings):
     app_name: str = "fastapiapp"
-    app_display_name: str = "FastAPI App"
-    app_version: str = "0.1.0"
     app_env: Literal["dev", "prod"] = "dev"
     app_debug: bool = False
+
+    app_display_name: str = "FastAPI App"
+    app_version: str = "0.1.0"
+    app_root_path: str = "/api/v1"
+    app_description: str | None = None
 
     db: DBSettings = DBSettings()
     cors: CORSSettings = CORSSettings()

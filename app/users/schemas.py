@@ -7,7 +7,7 @@ from pydantic import (
     computed_field,
 )
 
-from app.db.schemas import IDModel, TimestampModel
+from app.db.schemas import UUIDModel, TimestampModel
 from app.schemas import BackendBase
 
 
@@ -15,7 +15,7 @@ class UserBase(BackendBase):
     pass
 
 
-class UserRead(UserBase, IDModel, TimestampModel):
+class UserRead(UserBase, UUIDModel, TimestampModel):
     first_name: str | None = None
     last_name: str | None = None
     email: EmailStr | None = None

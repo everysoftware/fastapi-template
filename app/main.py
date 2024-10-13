@@ -26,8 +26,8 @@ app = FastAPI(
     lifespan=lifespan,
     title=settings.app_display_name,
     version=settings.app_version,
-    summary="No description",
-    root_path="/api/v1",
+    summary=settings.app_description,
+    root_path=settings.app_root_path,
 )
 
 setup_cors(app)

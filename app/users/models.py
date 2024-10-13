@@ -2,10 +2,10 @@ from sqlalchemy import Boolean
 from sqlalchemy.orm import mapped_column, Mapped
 
 from app.db.base import BaseOrm
-from app.db.mixins import TimestampMixin, IDMixin
+from app.db.mixins import TimestampMixin, UUID4Mixin
 
 
-class UserOrm(BaseOrm, IDMixin, TimestampMixin):
+class UserOrm(BaseOrm, UUID4Mixin, TimestampMixin):
     __tablename__ = "users"
 
     first_name: Mapped[str]
